@@ -50,16 +50,16 @@ public class registerFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				File f = new File("userpass.txt");
+				File f = new File("userpass.csv");
 				FileReader fr = null;
 				try {
 					fr = new FileReader(f);
 					BufferedReader reader = new BufferedReader(fr);
 					String s = reader.readLine();
-					String s1[] = s.split(" ");
+					String s1[] = s.split(",");
 					boolean check = false;
 					while (s != null) {
-						s1 = s.split(" ");
+						s1 = s.split(",");
 						s = reader.readLine();
 				//			if (user.getText().equals(s1[0]) || subj.getText().equals(s1[2])) {
 				//				JOptionPane.showMessageDialog(null, "This user or subject have in database already");
@@ -108,9 +108,10 @@ public class registerFrame extends JFrame{
 						JOptionPane.showMessageDialog(null, "Register finish");
 						FileWriter fw = new FileWriter(f,true);
 						PrintWriter writer = new PrintWriter(fw);
-						writer.print("\n" + user.getText() + " " + pass.getText() + " " + subj.getText());
+						writer.print("\n" + user.getText() + "," + pass.getText() + "," + subj.getText());
 						writer.close();
-						fw.close();						
+						fw.close();
+						dispose();
 						}
 
 					

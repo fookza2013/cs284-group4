@@ -33,8 +33,10 @@ public class loginFrame extends JFrame{
 	private JLabel register;
 	private JPanel cenP;
 	
-	
-	
+	private String course;
+	public String getCourse(){
+		return course;
+	}
 	public loginFrame(){
 		setLayout(new FlowLayout());
 		cenP = new JPanel();
@@ -46,10 +48,8 @@ public class loginFrame extends JFrame{
 		pass = new JPasswordField(10);
 		register = new JLabel("register");
 		register.addMouseListener(new MouseAdapter() {
-			 public void mouseClicked(MouseEvent e)  
-			    {  
+			 public void mouseClicked(MouseEvent e) {  
 				 	new registerFrame();
-			        
 			    }  
 		});
 
@@ -59,20 +59,24 @@ public class loginFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				File f = new File("userpass.txt");
+				File f = new File("userpass.csv");
 				FileReader fr = null;
 				try {
 					fr = new FileReader(f);
 					BufferedReader reader = new BufferedReader(fr);
 					String s = reader.readLine();
-					String s1[] = s.split(" ");
+					String s1[] = s.split(",");
 					boolean check = false;
 					while (s != null) {
-						s1 = s.split(" ");
+						s1 = s.split(",");
 						s = reader.readLine();
 							if (user.getText().equals(s1[0]) && pass.getText().equals(s1[1])) {
 								JOptionPane.showMessageDialog(null, "Username and Password is correct");
 								check = true;
+								course = s1[2];
+//								System.out.println(course);
+								new userFrame(getCourse());
+								dispose();
 							}					
 						}
 					if(user.getText().equals("") && pass.getText().equals("")){
@@ -114,6 +118,7 @@ public class loginFrame extends JFrame{
 		setLocationRelativeTo(null); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
 	public static void main(String[] args) {
 		new loginFrame();
 	}
