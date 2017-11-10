@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.TitledBorder;
 
 public class loginFrame extends JFrame{
 	
@@ -33,6 +34,11 @@ public class loginFrame extends JFrame{
 	private JLabel register;
 	private JPanel cenP;
 	
+	private String username;
+	public String getUser(){
+		return username;
+	}
+	
 	private String course;
 	public String getCourse(){
 		return course;
@@ -42,11 +48,14 @@ public class loginFrame extends JFrame{
 		cenP = new JPanel();
 		login = new JLabel("Login", SwingConstants.CENTER);
 		cenP.setLayout(new GridLayout(0, 1));
+		cenP.setBorder(new TitledBorder("Login"));
 		us = new JLabel("User");
 		ps = new JLabel("Password");
 		user = new JTextField(10);
 		pass = new JPasswordField(10);
-		register = new JLabel("register");
+		
+		String regis = "<html><u>register</u></html>";
+		register = new JLabel(regis);
 		register.addMouseListener(new MouseAdapter() {
 			 public void mouseClicked(MouseEvent e) {  
 				 	new registerFrame();
@@ -73,9 +82,10 @@ public class loginFrame extends JFrame{
 							if (user.getText().equals(s1[0]) && pass.getText().equals(s1[1])) {
 								JOptionPane.showMessageDialog(null, "Username and Password is correct");
 								check = true;
+								username = s1[0];
 								course = s1[2];
 //								System.out.println(course);
-								new userFrame(getCourse());
+								new userFrame(getUser(), getCourse());
 								dispose();
 							}					
 						}
@@ -103,7 +113,7 @@ public class loginFrame extends JFrame{
 			}
 		});
 		
-		cenP.add(login);
+		//cenP.add(login);
 		cenP.add(us);
 		cenP.add(user);
 		cenP.add(ps);
