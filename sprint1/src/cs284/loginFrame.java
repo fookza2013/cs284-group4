@@ -89,6 +89,7 @@ public class loginFrame extends JFrame{
 								dispose();
 							}					
 						}
+					
 					if(user.getText().equals("") && pass.getText().equals("")){
 							JOptionPane.showMessageDialog(null, "Please input your username and password");
 						}

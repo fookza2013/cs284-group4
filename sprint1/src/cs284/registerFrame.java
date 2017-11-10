@@ -49,6 +49,7 @@ public class registerFrame extends JFrame{
 		regB = new JButton("Register");
 		regB.addActionListener(new ActionListener() {
 			
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
