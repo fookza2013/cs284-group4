@@ -152,6 +152,7 @@ public class userFrame extends JFrame{
 						add(cP,BorderLayout.CENTER);
 						table = new JTable(data, taskbar);
 						sp = new JScrollPane(table);
+						table.setFillsViewportHeight(true);
 						add(sp,BorderLayout.CENTER);
 						
 						
