@@ -34,14 +34,11 @@ public class loginFrame extends JFrame{
 	private JLabel register;
 	private JPanel cenP;
 	
-<<<<<<< HEAD
 	private String username;
 	public String getUser(){
 		return username;
 	}
 	
-=======
->>>>>>> refs/remotes/origin/master
 	private String course;
 	public String getCourse(){
 		return course;
@@ -85,16 +82,10 @@ public class loginFrame extends JFrame{
 							if (user.getText().equals(s1[0]) && pass.getText().equals(s1[1])) {
 								JOptionPane.showMessageDialog(null, "Username and Password is correct");
 								check = true;
-<<<<<<< HEAD
 								username = s1[0];
 								course = s1[2];
 //								System.out.println(course);
 								new userFrame(getUser(), getCourse());
-=======
-								course = s1[2];
-//								System.out.println(course);
-								new userFrame(getCourse());
->>>>>>> refs/remotes/origin/master
 								dispose();
 							}					
 						}
