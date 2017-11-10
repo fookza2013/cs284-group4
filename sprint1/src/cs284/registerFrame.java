@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.TitledBorder;
 
 public class registerFrame extends JFrame{
 	
@@ -38,6 +39,7 @@ public class registerFrame extends JFrame{
 		cenP = new JPanel();
 		register = new JLabel("Register", SwingConstants.CENTER);
 		cenP.setLayout(new GridLayout(0, 1));
+		cenP.setBorder(new TitledBorder("Register"));
 		us = new JLabel("User");
 		ps = new JLabel("Password");
 		sub = new JLabel("Subject");
@@ -123,7 +125,7 @@ public class registerFrame extends JFrame{
 			}
 		});
 		
-		cenP.add(register);
+	//	cenP.add(register);
 		cenP.add(us);
 		cenP.add(user);
 		cenP.add(ps);
