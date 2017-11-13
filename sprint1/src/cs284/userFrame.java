@@ -28,7 +28,7 @@ public class userFrame extends JFrame{
 	private JLabel subj;
 	private JLabel user;
 	private JLabel logout;
-
+	excelTojTable etj;
 	
 	private JPanel wP;
 	private JButton imB;
@@ -104,69 +104,7 @@ public class userFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				data = new String[count][6];
-				int option = jc.showOpenDialog(null);
-				if (option == JFileChooser.APPROVE_OPTION) {
-					File f = jc.getSelectedFile();
-					FileReader fr = null;
-					try {
-						fr = new FileReader(f);
-						BufferedReader reader = new BufferedReader(fr);
-						for (int i = 0; i < 7; i++) {
-							reader.readLine();
-						}
-						
-						
-						String s = reader.readLine();
-						String s1[] = s.split(",");
-
-						while (s != null) {
-							s1 = s.split(",");
-							s = reader.readLine();
-							count++;
-							}
-						
-						reader.close();
-						//fr.close();
-						System.out.println(count);
-						
-						
-		/*				reader = new BufferedReader(fr);
-						for (int i = 0; i < 7; i++) {
-							reader.readLine();
-						}
-						String s2 = reader.readLine();
-						String s3[] = s2.split(",");
-						for (int i = 0; i < count-1; i++) {
-							s3 = s2.split(",");
-							s2 = reader.readLine();
-							
-							
-							
-							for (int j = 0; j < 6; j++) {			
-								data[i][j] = s3[j+1];
-							}	
-						} */
-						
-						cP = new JPanel();
-						add(cP,BorderLayout.CENTER);
-						table = new JTable(data, taskbar);
-						sp = new JScrollPane(table);
-						table.setFillsViewportHeight(true);
-						add(sp,BorderLayout.CENTER);
-						
-						
-						
-						
-						
-					} catch (FileNotFoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
+				etj = new excelTojTable();
 			}
 		});
 		
