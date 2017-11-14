@@ -24,16 +24,13 @@ public class excelTojTable extends JFrame {
 
     static JTable table;
     static JScrollPane scroll;
-    // header is Vector contains table Column
     static Vector headers = new Vector();
-    // Model is used to construct JTable
     static DefaultTableModel model = null;
-    // data is Vector contains Data from Excel File
     static Vector data = new Vector();
     static JButton jbClick;
     static JFileChooser jChooser;
-    static int tableWidth = 0; // set the tableWidth
-    static int tableHeight = 0; // set the tableHeight
+    static int tableWidth = 0; 
+    static int tableHeight = 0; 
 
     public excelTojTable() {
         super("Import Excel To JTable");
@@ -43,7 +40,7 @@ public class excelTojTable extends JFrame {
         jChooser = new JFileChooser();
         jbClick = new JButton("Select Excel File");
         buttonPanel.add(jbClick, BorderLayout.CENTER);
-        // Show Button Click Event
+ 
         jbClick.addActionListener(new ActionListener() {
 
             @Override
@@ -103,12 +100,6 @@ public class excelTojTable extends JFrame {
         setResizable(true);
         setVisible(true);
     }
-
-    /**
-     * Fill JTable with Excel file data.
-     *
-     * @param file file :contains xls file to display in jTable
-     */
     void fillData(File file) {
 
         Workbook workbook = null;
