@@ -1,6 +1,7 @@
 package cs284;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import jxl.Cell;
 import jxl.Sheet;
@@ -107,30 +108,68 @@ public class excelTojTable extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
+				JFileChooser fc = new JFileChooser();
+			    int option = fc.showSaveDialog(excelTojTable.this);
+			    if(option == JFileChooser.APPROVE_OPTION){
+			        String filename = fc.getSelectedFile().getName();
+			        String path = fc.getSelectedFile().getParentFile().getPath();
+
+			        int len = filename.length();
+			        String ext = "";
+			        String file = "";
+
+			        if(len > 4){
+			            ext = filename.substring(len-4, len);
+			        }
+
+			        if(ext.equals(".xls")){
+			            file = path + "\\" + filename; 
+			        }else{
+			            file = path + "\\" + filename + ".xls"; 
+			        }
+			        toExcel(table, new File(file));
+
+
+			    }
+
+			    }
+
+			private void toExcel(JTable table, File file) {
+				// TODO Auto-generated method stub
+				try{
+					TableModel model = table.getModel();
+					FileWriter excel = new FileWriter(file);
+
+					for(int i = 0; i < model.getColumnCount(); i++){
+						excel.write(model.getColumnName(i) + "\t");
+					}
+
+					excel.write("\n");
+
+					for(int i=0; i< model.getRowCount(); i++) {
+						for(int j=0; j < model.getColumnCount(); j++) {
+							excel.write(model.getValueAt(i,j).toString()+"\t");
+						}
+						excel.write("\n");
+					}
+
+					excel.close();
+				}catch(IOException e){ System.out.println(e); }
 			}
+				
 		});
+				
+			
+		{;
 		sP.add(summit);
 		add(sP,BorderLayout.SOUTH);
 		
 		
 		
-        setSize(600, 600);
+        setSize(1000, 1000);
         setResizable(true);
         setVisible(true);
+        }
     }
     void fillData(File file) {
 
