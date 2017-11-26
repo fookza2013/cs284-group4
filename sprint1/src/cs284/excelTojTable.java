@@ -76,7 +76,7 @@ public class excelTojTable extends JFrame {
         table.setBackground(Color.pink);
 
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        table.setEnabled(false);
+   //     table.setEnabled(false);
         table.setRowHeight(25);
         table.setRowMargin(4);
 
@@ -115,13 +115,13 @@ public class excelTojTable extends JFrame {
             Sheet sheet = workbook.getSheet(0);
 
             headers.clear();
-            for (int i = 0; i < sheet.getColumns(); i++) {
+            for (int i = 0; i < (sheet.getColumns())-11; i++) {
                 Cell cell1 = sheet.getCell(i, 0);
                 headers.add(cell1.getContents());
             }
 
             data.clear();
-            for (int j = 1; j < sheet.getRows(); j++) {
+            for (int j = 6; j < sheet.getRows(); j++) {
                 Vector d = new Vector();
                 for (int i = 0; i < sheet.getColumns(); i++) {
 
