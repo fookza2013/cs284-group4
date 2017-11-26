@@ -1,6 +1,5 @@
 package cs284;
 
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 import jxl.Cell;
@@ -31,6 +30,8 @@ public class excelTojTable extends JFrame {
     static JFileChooser jChooser;
     static int tableWidth = 0; 
     static int tableHeight = 0; 
+	private JButton summit;
+	private JPanel sP;
 
     public excelTojTable() {
         super("Import Excel To JTable");
@@ -96,6 +97,16 @@ public class excelTojTable extends JFrame {
                 BorderLayout.NORTH);
         getContentPane().add(scroll,
                 BorderLayout.CENTER);
+        
+        
+
+		sP = new JPanel();
+		summit = new JButton("Summit");
+		sP.add(summit);
+		add(sP,BorderLayout.SOUTH);
+		
+		
+		
         setSize(600, 600);
         setResizable(true);
         setVisible(true);
