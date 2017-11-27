@@ -7,7 +7,7 @@ public class Student {
 	private String grade;
 	private double total;
 	
-	public Student(String id,String name,String type,String point,String point1,String point2,String point3,String point4){
+	public Student(String id,String name,String type,String point,String point1,String point2,String point3,String point4,double total){
 		this.id = id;
 		this.name = name;
 		this.type = type;
@@ -16,13 +16,16 @@ public class Student {
 		this.point2 = point2;
 		this.point3 = point3;
 		this.point4 = point4;
+		this.total = total;
 	}
 	public Student(String id,String name,String type){
 		this.id = id;
 		this.name = name;
 		this.type = type;
 	}
-
+	public double getTotal() {
+		return total;
+	}
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -56,14 +59,13 @@ public class Student {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	public void setTotal(String point,String point1,String point2,String point3,String point4,String point5 ){
-		
+	public void setTotal(String point,String point1,String point2,String point3,String point4 ,double total){	
+		this.total = Double.valueOf(point)+Double.valueOf(point1)+Double.valueOf(point2)+Double.valueOf(point3)+Double.valueOf(point4);
+
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public void setType(String type) {
-		this.type = type;
-	}
+
 
 }

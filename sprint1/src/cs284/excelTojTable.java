@@ -119,10 +119,12 @@ public class excelTojTable extends JFrame {
 					double total3 = Double.parseDouble(table.getValueAt(i, 9).toString());
 					double total4 = Double.parseDouble(table.getValueAt(i, 10).toString());
 					*/
-						Studentarr.add(new Student(table.getValueAt(i, 1).toString(), table.getValueAt(i, 2).toString(), table.getValueAt(i, 3).toString(),table.getValueAt(i, 6).toString(),table.getValueAt(i, 7).toString(),table.getValueAt(i, 8).toString(),table.getValueAt(i, 9).toString(),table.getValueAt(i, 10).toString() ));	
+						Studentarr.add(new Student(table.getValueAt(i, 1).toString(), table.getValueAt(i, 2).toString(), table.getValueAt(i, 3).toString(),table.getValueAt(i, 6).toString(),table.getValueAt(i, 7).toString(),table.getValueAt(i, 8).toString(),table.getValueAt(i, 9).toString(),table.getValueAt(i, 10).toString(),0 ));	
+							
 				}
 				for(int j=0;j<Studentarr.size();j++){
-				System.out.println(Studentarr.get(j).getId()+" "+Studentarr.get(j).getName()+" "+Studentarr.get(j).getPoint()+" "+Studentarr.get(j).getPoint1()+" "+Studentarr.get(j).getPoint2()+" "+Studentarr.get(j).getPoint3()+" "+Studentarr.get(j).getPoint4());
+					Studentarr.get(j).setTotal(Studentarr.get(j).getPoint(), Studentarr.get(j).getPoint1(), Studentarr.get(j).getPoint2(), Studentarr.get(j).getPoint3(), Studentarr.get(j).getPoint4(),Studentarr.get(j).getTotal());
+				System.out.println(Studentarr.get(j).getId()+" "+Studentarr.get(j).getName()+" "+Studentarr.get(j).getPoint()+" "+Studentarr.get(j).getPoint1()+" "+Studentarr.get(j).getPoint2()+" "+Studentarr.get(j).getPoint3()+" "+Studentarr.get(j).getPoint4()+" "+Studentarr.get(j).getTotal());
 			}
 			}
 		});
