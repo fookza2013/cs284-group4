@@ -52,75 +52,10 @@ public class registerFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				File f = new File("userpass.csv");
-				FileReader fr = null;
-				try {
-					fr = new FileReader(f);
-					BufferedReader reader = new BufferedReader(fr);
-					String s = reader.readLine();
-					String s1[] = s.split(",");
-					boolean check = false;
-					while (s != null) {
-						s1 = s.split(",");
-						s = reader.readLine();
-				//			if (user.getText().equals(s1[0]) || subj.getText().equals(s1[2])) {
-				//				JOptionPane.showMessageDialog(null, "This user or subject have in database already");
-				//				check = true;
-				//			}	
-							if (user.getText().equals(s1[0])) {
-								JOptionPane.showMessageDialog(null, "This user have in database already");
-								check = true;
-							}	
-							
-							if ( subj.getText().equals(s1[2])) {
-								JOptionPane.showMessageDialog(null, "This subject have in database already");
-								check = true;
-							}				
-						}
-					
-					if(user.getText().equals("") && pass.getText().equals("") && subj.getText().equals("")){
-						JOptionPane.showMessageDialog(null, "Please input your username,password and subject");	
-						}
-								
-					else if(user.getText().equals("") && pass.getText().equals("")){
-						JOptionPane.showMessageDialog(null, "Please input your username and password");
-						}
-					
-					else if(user.getText().equals("") && subj.getText().equals("")){
-						JOptionPane.showMessageDialog(null, "Please input your username and subject");
-						}
-					
-					else if(pass.getText().equals("") && subj.getText().equals("")){
-						JOptionPane.showMessageDialog(null, "Please input your password and subject");
-						}
-	
-					else if (user.getText().equals("")) {
-						JOptionPane.showMessageDialog(null, "Please input your username");
-						}
-					
-					else if (pass.getText().equals("")) {
-						JOptionPane.showMessageDialog(null, "Please input your password");
-						}
-					
-					else if (subj.getText().equals("")) {
-						JOptionPane.showMessageDialog(null, "Please input your subject");
-						}
-					
-					else if(check == false){
-						JOptionPane.showMessageDialog(null, "Register finish");
-						FileWriter fw = new FileWriter(f,true);
-						PrintWriter writer = new PrintWriter(fw);
-						writer.print("\n" + user.getText() + "," + pass.getText() + "," + subj.getText());
-						writer.close();
-						fw.close();
-						dispose();
-						}
-
-					
-					
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				if(Register.userPassCheck(user.getText(),new String(pass.getPassword()),subj.getText()))
+				{
+					new loginFrame();
+					dispose();
 				}
 			}
 		});
