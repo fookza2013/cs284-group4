@@ -56,15 +56,10 @@ public class Student {
 	public String getGrade() {
 		return grade;
 	}
-	public void setGrade(String grade) {
-		this.grade = grade;
-	}
+
 	public void setTotal(String point,String point1,String point2,String point3,String point4 ,double total){	
 		this.total = Double.valueOf(point)+Double.valueOf(point1)+Double.valueOf(point2)+Double.valueOf(point3)+Double.valueOf(point4);
 
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 
 
