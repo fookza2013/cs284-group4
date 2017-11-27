@@ -34,6 +34,7 @@ public class excelTojTable extends JFrame {
 	private JButton summit,calculate;
 	private JPanel sP;
 	ArrayList<Student> Studentarr = new ArrayList<>();
+	double max=0,mean=0,min=100;
 	
     public excelTojTable() {
         super("Import Excel To JTable");
@@ -113,23 +114,36 @@ public class excelTojTable extends JFrame {
 				int tcol = table.getColumnCount();
 				
 				for(int i=1;i<trow-1;i++){
-					if(table.getValueAt(i, 6)=="" || table.getValueAt(i, 7)=="" || table.getValueAt(i, 8)=="" || table.getValueAt(i, 9)=="" || table.getValueAt(i, 10)==""){
-							table.setValueAt(0, i, 6);
-							table.setValueAt(0, i, 7);
-							table.setValueAt(0, i, 8);
-							table.setValueAt(0, i, 9);
-							table.setValueAt(0, i, 10);
-							Studentarr.add(new Student(table.getValueAt(i, 1).toString(), table.getValueAt(i, 2).toString(), table.getValueAt(i, 3).toString(),table.getValueAt(i, 6).toString(),table.getValueAt(i, 7).toString(),table.getValueAt(i, 8).toString(),table.getValueAt(i, 9).toString(),table.getValueAt(i, 10).toString(),0 ));
-					}
+							if(table.getValueAt(i, 6)=="" || table.getValueAt(i, 7)=="" || table.getValueAt(i, 8)=="" || table.getValueAt(i, 9)=="" || table.getValueAt(i, 10)==""){
+								table.setValueAt(0, i, 6);
+								table.setValueAt(0, i, 7);
+								table.setValueAt(0, i, 8);
+								table.setValueAt(0, i, 9);
+								table.setValueAt(0, i, 10);
+							}
+
 					else{
-						Studentarr.add(new Student(table.getValueAt(i, 1).toString(), table.getValueAt(i, 2).toString(), table.getValueAt(i, 3).toString(),table.getValueAt(i, 6).toString(),table.getValueAt(i, 7).toString(),table.getValueAt(i, 8).toString(),table.getValueAt(i, 9).toString(),table.getValueAt(i, 10).toString(),0 ));	
+						Studentarr.add(new Student(table.getValueAt(i, 1).toString(), table.getValueAt(i, 2).toString(), table.getValueAt(i, 3).toString(),"-",table.getValueAt(i, 6).toString(),table.getValueAt(i, 7).toString(),table.getValueAt(i, 8).toString(),table.getValueAt(i, 9).toString(),table.getValueAt(i, 10).toString(),0 ));	
 					}		
 				}
 				for(int j=0;j<Studentarr.size();j++){
 					Studentarr.get(j).setTotal(Studentarr.get(j).getPoint(), Studentarr.get(j).getPoint1(), Studentarr.get(j).getPoint2(), Studentarr.get(j).getPoint3(), Studentarr.get(j).getPoint4(),Studentarr.get(j).getTotal());
-				System.out.println(Studentarr.get(j).getId()+" "+Studentarr.get(j).getName()+" "+Studentarr.get(j).getPoint()+" "+Studentarr.get(j).getPoint1()+" "+Studentarr.get(j).getPoint2()+" "+Studentarr.get(j).getPoint3()+" "+Studentarr.get(j).getPoint4()+" "+Studentarr.get(j).getTotal());
+					mean = mean+Studentarr.get(j).getTotal();
+					if(Studentarr.get(j).getTotal()>max){
+						max = Studentarr.get(j).getTotal();
+					}
+					if(Studentarr.get(j).getTotal()<min){
+						min = Studentarr.get(j).getTotal();
+					}
+					Studentarr.get(j).SetGrade(Studentarr.get(j).getGrade(), Studentarr.get(j).getTotal());
+					table.setValueAt(Studentarr.get(j).getGrade(), j+1, 5);
+				System.out.println(Studentarr.get(j).getId()+" "+Studentarr.get(j).getName()+" "+Studentarr.get(j).getPoint()+" "+Studentarr.get(j).getPoint1()+" "+Studentarr.get(j).getPoint2()+" "+Studentarr.get(j).getPoint3()+" "+Studentarr.get(j).getPoint4()+" "+Studentarr.get(j).getTotal()+" "+Studentarr.get(j).getGrade());
 			}
+				mean = mean/Studentarr.size();
+				System.out.println("max = "+max+"\n"+" mean = "+mean+"\n"+"min = "+min);
 			}
+			
+			
 		});
 		summit = new JButton("Summit");
 		summit.addActionListener(new ActionListener() {
