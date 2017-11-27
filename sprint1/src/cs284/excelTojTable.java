@@ -31,9 +31,10 @@ public class excelTojTable extends JFrame {
     static JFileChooser jChooser;
     static int tableWidth = 0; 
     static int tableHeight = 0; 
-	private JButton summit;
+	private JButton summit,calculate;
 	private JPanel sP;
-
+	ArrayList<Student> Studentarr = new ArrayList<>();
+	
     public excelTojTable() {
         super("Import Excel To JTable");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -102,6 +103,29 @@ public class excelTojTable extends JFrame {
         
 
 		sP = new JPanel();
+		calculate = new JButton("calculate");
+		calculate.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int trow = table.getRowCount();
+				int tcol = table.getColumnCount();
+				
+				for(int i=1;i<trow-1;i++){
+					/*double total = Double.parseDouble(table.getValueAt(i, 6).toString());
+					double total1 = Double.parseDouble(table.getValueAt(i, 7).toString());
+					double total2 = Double.parseDouble(table.getValueAt(i, 8).toString());
+					double total3 = Double.parseDouble(table.getValueAt(i, 9).toString());
+					double total4 = Double.parseDouble(table.getValueAt(i, 10).toString());
+					*/
+						Studentarr.add(new Student(table.getValueAt(i, 1).toString(), table.getValueAt(i, 2).toString(), table.getValueAt(i, 3).toString(),table.getValueAt(i, 6).toString(),table.getValueAt(i, 7).toString(),table.getValueAt(i, 8).toString(),table.getValueAt(i, 9).toString(),table.getValueAt(i, 10).toString() ));	
+				}
+				for(int j=0;j<Studentarr.size();j++){
+				System.out.println(Studentarr.get(j).getId()+" "+Studentarr.get(j).getName()+" "+Studentarr.get(j).getPoint()+" "+Studentarr.get(j).getPoint1()+" "+Studentarr.get(j).getPoint2()+" "+Studentarr.get(j).getPoint3()+" "+Studentarr.get(j).getPoint4());
+			}
+			}
+		});
 		summit = new JButton("Summit");
 		summit.addActionListener(new ActionListener() {
 			
@@ -161,6 +185,7 @@ public class excelTojTable extends JFrame {
 				
 			
 		{;
+		sP.add(calculate);
 		sP.add(summit);
 		add(sP,BorderLayout.SOUTH);
 		

@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -33,7 +34,7 @@ public class userFrame extends JFrame{
 	private JPanel wP;
 	private JButton imB;
 	private JFileChooser jc;
-	
+	ArrayList<Student> Studentarr = new ArrayList<>();
 	
 	private JPanel cP;
 	private JTable table;
