@@ -39,6 +39,7 @@ public class excelTojTable extends JFrame {
 	private JTextField email;
 	private JLabel e;
 	private JButton send;
+	private JButton clear;
 
 	
 	
@@ -165,6 +166,16 @@ public class excelTojTable extends JFrame {
 			
 			
 		});
+		
+		clear = new JButton("Clear");
+		clear.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Studentarr.clear();
+			}
+		});
 		save = new JButton("save");
 		save.addActionListener(new ActionListener() {
 			
@@ -223,6 +234,7 @@ public class excelTojTable extends JFrame {
 			
 		{;
 		sP.add(calculate);
+		sP.add(clear);
 		sP.add(save);
 		sP.add(e);
 		sP.add(email);
