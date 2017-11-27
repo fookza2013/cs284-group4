@@ -68,47 +68,10 @@ public class loginFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				File f = new File("userpass.csv");
-				FileReader fr = null;
-				try {
-					fr = new FileReader(f);
-					BufferedReader reader = new BufferedReader(fr);
-					String s = reader.readLine();
-					String s1[] = s.split(",");
-					boolean check = false;
-					while (s != null) {
-						s1 = s.split(",");
-						s = reader.readLine();
-							if (user.getText().equals(s1[0]) && pass.getText().equals(s1[1])) {
-								JOptionPane.showMessageDialog(null, "Username and Password is correct");
-								check = true;
-								username = s1[0];
-								course = s1[2];
-//								System.out.println(course);
-								new userFrame(getUser(), getCourse());
-								dispose();
-							}					
-						}
-					if(user.getText().equals("") && pass.getText().equals("")){
-							JOptionPane.showMessageDialog(null, "Please input your username and password");
-						}
-					else if (user.getText().equals("")) {
-							JOptionPane.showMessageDialog(null, "Please input your username");
-						}
-					else if (pass.getText().equals("")) {
-							JOptionPane.showMessageDialog(null, "Please input your password");
-						}
-					else if(check == false){
-							JOptionPane.showMessageDialog(null, "Username and Password is not correct");
-						}
-					reader.close();
-					fr.close();
-				} catch (FileNotFoundException e1) {
-					// TODO: handle exception
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO: handle exception
-					e1.printStackTrace();
+				if(Usercheck.userPassCheck(user.getText(),new String(pass.getPassword())))
+				{
+					
+					dispose();
 				}
 			}
 		});
