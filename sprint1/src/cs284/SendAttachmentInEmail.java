@@ -1,5 +1,6 @@
 package cs284;
 
+
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -18,9 +19,9 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 public class SendAttachmentInEmail {
-   public static void main(String[] args) {
+   public SendAttachmentInEmail(String email){
       // Recipient's email ID needs to be mentioned.
-      String to = "fphutha@gmail.com";
+      String to = email;
 
       // Sender's email ID needs to be mentioned
       String from = "cstusendgrade@gmail.com";

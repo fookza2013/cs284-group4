@@ -31,11 +31,14 @@ public class excelTojTable extends JFrame {
     static JFileChooser jChooser;
     static int tableWidth = 0; 
     static int tableHeight = 0; 
-	private JButton summit,calculate;
+	private JButton save,calculate;
 	private JPanel sP;
 	ArrayList<Student> Studentarr = new ArrayList<>();
 	ArrayList<Student> Score = new ArrayList<>();
 	double max=0,mean=0,min=100;
+	private JTextField email;
+	private JLabel e;
+	private JButton send;
 	
     public excelTojTable() {
         super("Import Excel To JTable");
@@ -105,6 +108,17 @@ public class excelTojTable extends JFrame {
         
 
 		sP = new JPanel();
+		email = new JTextField(15);
+		e = new JLabel("  EMAIL : ");
+		send = new JButton("Send");
+		send.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new SendAttachmentInEmail(email.getText());
+			}
+		});
 		calculate = new JButton("calculate");
 		calculate.addActionListener(new ActionListener() {
 			
@@ -150,8 +164,8 @@ public class excelTojTable extends JFrame {
 			
 			
 		});
-		summit = new JButton("Summit");
-		summit.addActionListener(new ActionListener() {
+		save = new JButton("save");
+		save.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -210,7 +224,10 @@ public class excelTojTable extends JFrame {
 			
 		{;
 		sP.add(calculate);
-		sP.add(summit);
+		sP.add(save);
+		sP.add(e);
+		sP.add(email);
+		sP.add(send);
 		add(sP,BorderLayout.SOUTH);
 		
 		
