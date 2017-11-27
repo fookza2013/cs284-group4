@@ -39,6 +39,8 @@ public class excelTojTable extends JFrame {
 	private JTextField email;
 	private JLabel e;
 	private JButton send;
+
+	
 	
     public excelTojTable() {
         super("Import Excel To JTable");
@@ -69,7 +71,7 @@ public class excelTojTable extends JFrame {
                     tableHeight = model.getRowCount()
                             * 25;
                     table.setPreferredSize(new Dimension(
-                            tableWidth, tableHeight));
+                            tableWidth, tableHeight+1));
 
                     table.setModel(model);
                 }
@@ -154,10 +156,9 @@ public class excelTojTable extends JFrame {
 				System.out.println(Studentarr.get(j).getId()+" "+Studentarr.get(j).getName()+" "+Studentarr.get(j).getPoint()+" "+Studentarr.get(j).getPoint1()+" "+Studentarr.get(j).getPoint2()+" "+Studentarr.get(j).getPoint3()+" "+Studentarr.get(j).getPoint4()+" "+Studentarr.get(j).getTotal()+" "+Studentarr.get(j).getGrade());
 			}
 				mean = mean/Studentarr.size();
-				/*Score.add(new Student(max, mean, min));
-				table.setValueAt(Score.get(0).getMax(), trow, 6);
-				table.setValueAt(Score.get(0).getMean(), trow, 7);
-				table.setValueAt(Score.get(0).getMin(), trow, 8);*/
+				table.setValueAt("max = "+max, trow-1, 6);
+				table.setValueAt("mean = "+mean, trow-1, 7);
+				table.setValueAt("min = "+min, trow-1, 8);
 				System.out.println("max = "+max+"\n"+" mean = "+mean+"\n"+"min = "+min);
 
 			}
@@ -171,6 +172,7 @@ public class excelTojTable extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				JFileChooser fc = new JFileChooser();
+				fc.setSelectedFile(new File("c:\\grade.xls"));
 			    int option = fc.showSaveDialog(excelTojTable.this);
 			    if(option == JFileChooser.APPROVE_OPTION){
 			        String filename = fc.getSelectedFile().getName();
@@ -190,10 +192,7 @@ public class excelTojTable extends JFrame {
 			            file = path + "\\" + filename + ".xls"; 
 			        }
 			        toExcel(table, new File(file));
-
-
 			    }
-
 			    }
 
 			private void toExcel(JTable table, File file) {

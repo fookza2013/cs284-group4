@@ -5,7 +5,7 @@ public class Student {
 	private String name,type;
 	private String point="0",point1="0",point2="0",point3="0",point4="0";
 	private String grade;
-	private double total,max,min,mean;
+	private double total;
 	
 	public Student(String id,String name,String type,String grade,String point,String point1,String point2,String point3,String point4,double total){
 		this.id = id;
@@ -19,20 +19,7 @@ public class Student {
 		this.point4 = point4;
 		this.total = total;
 	}
-	public Student(double max,double mean,double min){
-		this.max = max;
-		this.mean = mean;
-		this.min = min;
-	}
-	public double getMax() {
-		return max;
-	}
-	public double getMean() {
-		return mean;
-	}
-	public double getMin() {
-		return min;
-	}
+
 	public double getTotal() {
 		return total;
 	}

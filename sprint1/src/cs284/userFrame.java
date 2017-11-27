@@ -33,8 +33,7 @@ public class userFrame extends JFrame{
 	
 	private JPanel wP;
 	private JButton imB;
-	private JFileChooser jc;
-	ArrayList<Student> Studentarr = new ArrayList<>();
+
 	
 	private JPanel cP;
 	private JTable table;
@@ -95,9 +94,8 @@ public class userFrame extends JFrame{
 		
 		wP = new JPanel();
 		wP.setLayout(null);
-		wP.setPreferredSize(new Dimension(100, 500));
+		wP.setPreferredSize(new Dimension(100, 100));
 		wP.setBorder(new TitledBorder(""));
-		jc = new JFileChooser(".");
 		imB  = new JButton("Import");
 		imB.setBounds(10, 10, 75, 20);
 		imB.addActionListener(new ActionListener() {
@@ -109,7 +107,7 @@ public class userFrame extends JFrame{
 			}
 		});
 		
-		add(wP,BorderLayout.WEST);
+		add(wP,BorderLayout.CENTER);
 		wP.add(imB);
 		
 
@@ -121,7 +119,7 @@ public class userFrame extends JFrame{
 		
 		
 		setTitle("Interface");
-		setSize(500, 500);
+		setSize(200, 175);
 		setVisible(true);
 		setLocationRelativeTo(null); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
