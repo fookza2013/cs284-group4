@@ -113,14 +113,17 @@ public class excelTojTable extends JFrame {
 				int tcol = table.getColumnCount();
 				
 				for(int i=1;i<trow-1;i++){
-					/*double total = Double.parseDouble(table.getValueAt(i, 6).toString());
-					double total1 = Double.parseDouble(table.getValueAt(i, 7).toString());
-					double total2 = Double.parseDouble(table.getValueAt(i, 8).toString());
-					double total3 = Double.parseDouble(table.getValueAt(i, 9).toString());
-					double total4 = Double.parseDouble(table.getValueAt(i, 10).toString());
-					*/
+					if(table.getValueAt(i, 6)=="" || table.getValueAt(i, 7)=="" || table.getValueAt(i, 8)=="" || table.getValueAt(i, 9)=="" || table.getValueAt(i, 10)==""){
+							table.setValueAt(0, i, 6);
+							table.setValueAt(0, i, 7);
+							table.setValueAt(0, i, 8);
+							table.setValueAt(0, i, 9);
+							table.setValueAt(0, i, 10);
+							Studentarr.add(new Student(table.getValueAt(i, 1).toString(), table.getValueAt(i, 2).toString(), table.getValueAt(i, 3).toString(),table.getValueAt(i, 6).toString(),table.getValueAt(i, 7).toString(),table.getValueAt(i, 8).toString(),table.getValueAt(i, 9).toString(),table.getValueAt(i, 10).toString(),0 ));
+					}
+					else{
 						Studentarr.add(new Student(table.getValueAt(i, 1).toString(), table.getValueAt(i, 2).toString(), table.getValueAt(i, 3).toString(),table.getValueAt(i, 6).toString(),table.getValueAt(i, 7).toString(),table.getValueAt(i, 8).toString(),table.getValueAt(i, 9).toString(),table.getValueAt(i, 10).toString(),0 ));	
-							
+					}		
 				}
 				for(int j=0;j<Studentarr.size();j++){
 					Studentarr.get(j).setTotal(Studentarr.get(j).getPoint(), Studentarr.get(j).getPoint1(), Studentarr.get(j).getPoint2(), Studentarr.get(j).getPoint3(), Studentarr.get(j).getPoint4(),Studentarr.get(j).getTotal());

@@ -3,7 +3,7 @@ package cs284;
 public class Student {
 	private String id;
 	private String name,type;
-	private String point,point1,point2,point3,point4;
+	private String point="0",point1="0",point2="0",point3="0",point4="0";
 	private String grade;
 	private double total;
 	
