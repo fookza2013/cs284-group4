@@ -34,6 +34,7 @@ public class excelTojTable extends JFrame {
 	private JButton summit,calculate;
 	private JPanel sP;
 	ArrayList<Student> Studentarr = new ArrayList<>();
+	ArrayList<Student> Score = new ArrayList<>();
 	double max=0,mean=0,min=100;
 	
     public excelTojTable() {
@@ -112,7 +113,6 @@ public class excelTojTable extends JFrame {
 				// TODO Auto-generated method stub
 				int trow = table.getRowCount();
 				int tcol = table.getColumnCount();
-				
 				for(int i=1;i<trow-1;i++){
 							if(table.getValueAt(i, 6)=="" || table.getValueAt(i, 7)=="" || table.getValueAt(i, 8)=="" || table.getValueAt(i, 9)=="" || table.getValueAt(i, 10)==""){
 								table.setValueAt(0, i, 6);
@@ -140,7 +140,12 @@ public class excelTojTable extends JFrame {
 				System.out.println(Studentarr.get(j).getId()+" "+Studentarr.get(j).getName()+" "+Studentarr.get(j).getPoint()+" "+Studentarr.get(j).getPoint1()+" "+Studentarr.get(j).getPoint2()+" "+Studentarr.get(j).getPoint3()+" "+Studentarr.get(j).getPoint4()+" "+Studentarr.get(j).getTotal()+" "+Studentarr.get(j).getGrade());
 			}
 				mean = mean/Studentarr.size();
+				/*Score.add(new Student(max, mean, min));
+				table.setValueAt(Score.get(0).getMax(), trow, 6);
+				table.setValueAt(Score.get(0).getMean(), trow, 7);
+				table.setValueAt(Score.get(0).getMin(), trow, 8);*/
 				System.out.println("max = "+max+"\n"+" mean = "+mean+"\n"+"min = "+min);
+
 			}
 			
 			
